@@ -20,5 +20,8 @@ This repository contains all my tasks from the **Ackee School of Solana**, focus
 ---
 
 ## Author
-lovegupta112 [https://github.com/lovegupta112]
+github:
+[lovegupta](https://github.com/lovegupta112)
+twitter:
+[itzlg|cyborg](https://x.com/MeLovegupta)
 
