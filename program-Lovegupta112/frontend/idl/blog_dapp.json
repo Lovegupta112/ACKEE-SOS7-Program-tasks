@@ -1,0 +1,1085 @@
+{
+  "address": "BmP9bJB3z33LfU23a2P6aybyZLnNFrZdBZfptgfihRiX",
+  "metadata": {
+    "name": "blog_dapp",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "add_blog",
+      "discriminator": [
+        23,
+        24,
+        162,
+        194,
+        88,
+        64,
+        246,
+        149
+      ],
+      "accounts": [
+        {
+          "name": "blog_author",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "blog",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  66,
+                  76,
+                  79,
+                  71,
+                  95,
+                  83,
+                  69,
+                  69,
+                  68
+                ]
+              },
+              {
+                "kind": "arg",
+                "path": "title"
+              },
+              {
+                "kind": "account",
+                "path": "blog_author"
+              }
+            ]
+          }
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "name": "content",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "comment_blog",
+      "discriminator": [
+        144,
+        86,
+        63,
+        157,
+        233,
+        251,
+        135,
+        247
+      ],
+      "accounts": [
+        {
+          "name": "comment_author",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "comment",
+          "writable": true
+        },
+        {
+          "name": "blog",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "content",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "dislike_blog",
+      "discriminator": [
+        10,
+        155,
+        71,
+        42,
+        88,
+        10,
+        251,
+        73
+      ],
+      "accounts": [
+        {
+          "name": "reaction_author",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "reaction",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  82,
+                  69,
+                  65,
+                  67,
+                  84,
+                  73,
+                  79,
+                  78,
+                  95,
+                  83,
+                  69,
+                  69,
+                  68
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "reaction_author"
+              },
+              {
+                "kind": "account",
+                "path": "blog"
+              }
+            ]
+          }
+        },
+        {
+          "name": "blog",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "like_blog",
+      "discriminator": [
+        135,
+        108,
+        212,
+        205,
+        27,
+        188,
+        171,
+        54
+      ],
+      "accounts": [
+        {
+          "name": "reaction_author",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "reaction",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  82,
+                  69,
+                  65,
+                  67,
+                  84,
+                  73,
+                  79,
+                  78,
+                  95,
+                  83,
+                  69,
+                  69,
+                  68
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "reaction_author"
+              },
+              {
+                "kind": "account",
+                "path": "blog"
+              }
+            ]
+          }
+        },
+        {
+          "name": "blog",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "remove_comment_blog",
+      "discriminator": [
+        92,
+        94,
+        26,
+        255,
+        130,
+        103,
+        0,
+        194
+      ],
+      "accounts": [
+        {
+          "name": "comment_author",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "comment"
+          ]
+        },
+        {
+          "name": "comment",
+          "writable": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "remove_reaction_blog",
+      "discriminator": [
+        156,
+        118,
+        207,
+        103,
+        249,
+        72,
+        15,
+        160
+      ],
+      "accounts": [
+        {
+          "name": "reaction_author",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "reaction"
+          ]
+        },
+        {
+          "name": "reaction",
+          "writable": true
+        },
+        {
+          "name": "blog",
+          "writable": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "save_blog",
+      "discriminator": [
+        48,
+        101,
+        189,
+        236,
+        180,
+        65,
+        116,
+        237
+      ],
+      "accounts": [
+        {
+          "name": "bookmark_author",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "bookmark",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  66,
+                  79,
+                  79,
+                  75,
+                  77,
+                  65,
+                  82,
+                  75,
+                  95,
+                  83,
+                  69,
+                  69,
+                  68
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "bookmark_author"
+              },
+              {
+                "kind": "account",
+                "path": "blog"
+              }
+            ]
+          }
+        },
+        {
+          "name": "blog",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "tip_for_blog",
+      "discriminator": [
+        170,
+        213,
+        200,
+        245,
+        168,
+        187,
+        250,
+        181
+      ],
+      "accounts": [
+        {
+          "name": "tip_author",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "tip",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  84,
+                  73,
+                  80,
+                  95,
+                  83,
+                  69,
+                  69,
+                  68
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "tip_author"
+              },
+              {
+                "kind": "account",
+                "path": "blog"
+              }
+            ]
+          }
+        },
+        {
+          "name": "blog",
+          "writable": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": [
+        {
+          "name": "tip_amt",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "unsave_blog",
+      "discriminator": [
+        248,
+        140,
+        164,
+        234,
+        220,
+        250,
+        12,
+        114
+      ],
+      "accounts": [
+        {
+          "name": "bookmark_author",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "bookmark"
+          ]
+        },
+        {
+          "name": "bookmark",
+          "writable": true
+        },
+        {
+          "name": "blog",
+          "writable": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "update_blog",
+      "discriminator": [
+        252,
+        54,
+        5,
+        181,
+        182,
+        6,
+        112,
+        203
+      ],
+      "accounts": [
+        {
+          "name": "blog_author",
+          "writable": true,
+          "signer": true,
+          "relations": [
+            "blog"
+          ]
+        },
+        {
+          "name": "blog",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  66,
+                  76,
+                  79,
+                  71,
+                  95,
+                  83,
+                  69,
+                  69,
+                  68
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "blog.title",
+                "account": "Blog"
+              },
+              {
+                "kind": "account",
+                "path": "blog_author"
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "content",
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Blog",
+      "discriminator": [
+        152,
+        205,
+        212,
+        154,
+        186,
+        203,
+        207,
+        244
+      ]
+    },
+    {
+      "name": "Bookmark",
+      "discriminator": [
+        19,
+        37,
+        17,
+        23,
+        221,
+        30,
+        27,
+        144
+      ]
+    },
+    {
+      "name": "Comment",
+      "discriminator": [
+        150,
+        135,
+        96,
+        244,
+        55,
+        199,
+        50,
+        65
+      ]
+    },
+    {
+      "name": "Reaction",
+      "discriminator": [
+        226,
+        61,
+        100,
+        191,
+        223,
+        221,
+        142,
+        139
+      ]
+    },
+    {
+      "name": "Tip",
+      "discriminator": [
+        87,
+        218,
+        38,
+        122,
+        15,
+        197,
+        190,
+        230
+      ]
+    }
+  ],
+  "events": [
+    {
+      "name": "AddCommentEvent",
+      "discriminator": [
+        250,
+        138,
+        77,
+        80,
+        232,
+        70,
+        48,
+        59
+      ]
+    },
+    {
+      "name": "AddReactionEvent",
+      "discriminator": [
+        25,
+        153,
+        255,
+        215,
+        190,
+        6,
+        11,
+        195
+      ]
+    },
+    {
+      "name": "BookmarkBlogEvent",
+      "discriminator": [
+        204,
+        80,
+        210,
+        156,
+        43,
+        244,
+        4,
+        221
+      ]
+    },
+    {
+      "name": "EditBlogEvent",
+      "discriminator": [
+        3,
+        10,
+        78,
+        49,
+        151,
+        17,
+        72,
+        187
+      ]
+    },
+    {
+      "name": "InitializeBlogEvent",
+      "discriminator": [
+        121,
+        248,
+        225,
+        246,
+        215,
+        13,
+        146,
+        159
+      ]
+    },
+    {
+      "name": "RemoveBlogEvent",
+      "discriminator": [
+        179,
+        10,
+        90,
+        209,
+        92,
+        92,
+        93,
+        158
+      ]
+    },
+    {
+      "name": "RemoveCommentEvent",
+      "discriminator": [
+        14,
+        237,
+        95,
+        71,
+        184,
+        236,
+        18,
+        77
+      ]
+    },
+    {
+      "name": "RemoveReactionEvent",
+      "discriminator": [
+        223,
+        238,
+        192,
+        208,
+        254,
+        131,
+        119,
+        152
+      ]
+    },
+    {
+      "name": "TipEvent",
+      "discriminator": [
+        213,
+        36,
+        191,
+        50,
+        28,
+        25,
+        189,
+        252
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "ContentTooLong",
+      "msg": "Cannot initialize, content too long"
+    },
+    {
+      "code": 6001,
+      "name": "TitleTooLong",
+      "msg": "Cannot initialize, title too long"
+    },
+    {
+      "code": 6002,
+      "name": "MinLikesReached",
+      "msg": "Minimum number of Likes Reached"
+    },
+    {
+      "code": 6003,
+      "name": "MaxLikesReached",
+      "msg": "Maximum number of Likes Reached"
+    },
+    {
+      "code": 6004,
+      "name": "MinDislikesReached",
+      "msg": "Minimum number of Dislikes Reached"
+    },
+    {
+      "code": 6005,
+      "name": "MaxDislikesReached",
+      "msg": "Maximum number of Dislikes Reached"
+    },
+    {
+      "code": 6006,
+      "name": "MinBookmarkReached",
+      "msg": "Minimum number of Bookmark Reached"
+    },
+    {
+      "code": 6007,
+      "name": "MaxBookmarkReached",
+      "msg": "Maximum number of Bookmark Reached"
+    },
+    {
+      "code": 6008,
+      "name": "MaxBlogTipReached",
+      "msg": "Maximum number of Blog tip Reached"
+    },
+    {
+      "code": 6009,
+      "name": "CommentTooLong",
+      "msg": "Comment too Long"
+    },
+    {
+      "code": 6010,
+      "name": "CannotTipOwnBlog",
+      "msg": "Can not tip own blog"
+    },
+    {
+      "code": 6011,
+      "name": "InsufficientBalance",
+      "msg": "Insufficient balance to tip"
+    }
+  ],
+  "types": [
+    {
+      "name": "AddCommentEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "comment_author",
+            "type": "pubkey"
+          },
+          {
+            "name": "blog",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AddReactionEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "reaction_author",
+            "type": "pubkey"
+          },
+          {
+            "name": "blog",
+            "type": "pubkey"
+          },
+          {
+            "name": "reaction_type",
+            "type": {
+              "defined": {
+                "name": "ReactionType"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Blog",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "blog_author",
+            "type": "pubkey"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "content",
+            "type": "string"
+          },
+          {
+            "name": "likes",
+            "type": "u64"
+          },
+          {
+            "name": "dislikes",
+            "type": "u64"
+          },
+          {
+            "name": "bookmarked",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Bookmark",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "bookmark_author",
+            "type": "pubkey"
+          },
+          {
+            "name": "related_blog",
+            "type": "pubkey"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "BookmarkBlogEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "bookmark_author",
+            "type": "pubkey"
+          },
+          {
+            "name": "blog",
+            "type": "pubkey"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Comment",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "comment_author",
+            "type": "pubkey"
+          },
+          {
+            "name": "related_blog",
+            "type": "pubkey"
+          },
+          {
+            "name": "content",
+            "type": "string"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "EditBlogEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "blog_author",
+            "type": "pubkey"
+          },
+          {
+            "name": "blog",
+            "type": "pubkey"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "InitializeBlogEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "blog_author",
+            "type": "pubkey"
+          },
+          {
+            "name": "blog",
+            "type": "pubkey"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Reaction",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "reaction_author",
+            "type": "pubkey"
+          },
+          {
+            "name": "related_blog",
+            "type": "pubkey"
+          },
+          {
+            "name": "reaction",
+            "type": {
+              "defined": {
+                "name": "ReactionType"
+              }
+            }
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ReactionType",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Like"
+          },
+          {
+            "name": "DisLike"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RemoveBlogEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "blog_author",
+            "type": "pubkey"
+          },
+          {
+            "name": "blog",
+            "type": "pubkey"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RemoveCommentEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "comment_author",
+            "type": "pubkey"
+          },
+          {
+            "name": "blog",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "RemoveReactionEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "reaction_author",
+            "type": "pubkey"
+          },
+          {
+            "name": "blog",
+            "type": "pubkey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Tip",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "tip_author",
+            "type": "pubkey"
+          },
+          {
+            "name": "related_blog",
+            "type": "pubkey"
+          },
+          {
+            "name": "total_tip",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TipEvent",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "blog_author",
+            "type": "pubkey"
+          },
+          {
+            "name": "blog",
+            "type": "pubkey"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  ]
+}
